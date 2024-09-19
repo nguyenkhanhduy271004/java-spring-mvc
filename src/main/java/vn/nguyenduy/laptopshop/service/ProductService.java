@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import vn.nguyenduy.laptopshop.domain.CartDetail;
 import vn.nguyenduy.laptopshop.domain.Order;
 import vn.nguyenduy.laptopshop.domain.OrderDetail;
 import vn.nguyenduy.laptopshop.domain.Product;
+import vn.nguyenduy.laptopshop.domain.Product_;
 import vn.nguyenduy.laptopshop.domain.User;
 import vn.nguyenduy.laptopshop.repository.CartDetailRepository;
 import vn.nguyenduy.laptopshop.repository.CartRepository;
@@ -44,12 +46,27 @@ public class ProductService {
         this.orderDetailRepository = orderDetailRepository;
     }
 
+    private Specification<Product> nameLike(String name) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
+    }
+
+    // public Specification<Product> queryByName(String name) {
+    // return (root, query, builder) -> {
+
+    // };
+
+    // }
+
     public Product createProduct(Product pr) {
         return this.productRepository.save(pr);
     }
 
     public Page<Product> fetchProducts(Pageable pageable) {
         return this.productRepository.findAll(pageable);
+    }
+
+    public Page<Product> fetchProductsByName(Pageable pageable, String name) {
+        return this.productRepository.findAll(this.nameLike(name), pageable);
     }
 
     public Optional<Product> fetchProductById(long id) {

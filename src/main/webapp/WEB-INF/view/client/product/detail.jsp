@@ -209,7 +209,7 @@
                     <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
 
                     <!-- Template Javascript -->
-                    <script src="/client/js/main.js"></script>
+                    <script src="/client/js/main.js?version=1"></script>
                 </body>
 
                 </html>

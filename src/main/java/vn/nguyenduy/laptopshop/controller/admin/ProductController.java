@@ -37,7 +37,8 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getProduct(Model model, @RequestParam("page") Optional<String> pageOptional) {
+    public String getProduct(Model model,
+            @RequestParam("page") Optional<String> pageOptional) {
         int page = 1;
         try {
             if (pageOptional.isPresent()) {
@@ -59,16 +60,29 @@ public class ProductController {
 
     @RequestMapping("/admin/product/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
-        Optional<Product> product = this.productService.fetchProductById(id);
-        model.addAttribute("product", product);
+        Optional<Product> productOptional = this.productService.fetchProductById(id);
+
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            model.addAttribute("product", product);
+        } else {
+            return "redirect:/admin/product";
+        }
+
         model.addAttribute("id", id);
         return "admin/product/detail";
     }
 
-    @RequestMapping("/admin/product/update/{id}") // GET
+    @RequestMapping("/admin/product/update/{id}")
     public String getUpdateUserPage(Model model, @PathVariable long id) {
-        Optional<Product> product = this.productService.fetchProductById(id);
-        model.addAttribute("newProduct", product);
+        Optional<Product> productOptional = this.productService.fetchProductById(id);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            model.addAttribute("newProduct", product);
+        } else {
+            return "redirect:/admin/product";
+        }
+
         return "admin/product/update";
     }
 
@@ -98,7 +112,6 @@ public class ProductController {
     @PostMapping("/admin/product/delete")
     public String postDeleteUser(Model model, @ModelAttribute("newProduct") Product product) {
         this.productService.deleteProduct(product.getId());
-        ;
         return "redirect:/admin/product";
     }
 

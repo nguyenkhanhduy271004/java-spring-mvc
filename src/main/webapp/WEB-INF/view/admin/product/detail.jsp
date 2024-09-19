@@ -38,7 +38,7 @@
 
                                             <hr />
 
-                                            <div class="card" style="width: 60%">
+                                            <div class="card" style="width: 40%">
                                                 <img class="card-img-top" src="/images/product/${product.image}"
                                                     alt="Card image cap">
 
