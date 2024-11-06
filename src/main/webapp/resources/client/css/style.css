@@ -12,6 +12,26 @@
     opacity: 1;
 }
 
+.main-sale {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+
+.list-sale-product {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.product {
+    flex: 0 0 auto;
+    width: calc(100% / 4);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
 .back-to-top {
     position: fixed;
     right: 30px;

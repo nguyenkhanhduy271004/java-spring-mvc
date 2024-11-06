@@ -13,6 +13,59 @@
             <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
             <link href="css/styles.css" rel="stylesheet" />
             <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f6f9;
+                    color: #333;
+                }
+
+                .card {
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.2s ease-in-out;
+                }
+
+                .card:hover {
+                    transform: translateY(-5px);
+                }
+
+                .card-body {
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100px;
+                }
+
+                .card-footer {
+                    background-color: rgba(255, 255, 255, 0.2);
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                .stretched-link {
+                    font-weight: bold;
+                }
+
+                .container-fluid {
+                    padding: 2em;
+                }
+
+                .breadcrumb {
+                    background: none;
+                    font-size: 1.1em;
+                    font-weight: 500;
+                }
+
+                .breadcrumb-item a {
+                    color: #007bff;
+                }
+
+                .breadcrumb-item.active {
+                    color: #6c757d;
+                }
+            </style>
         </head>
 
         <body class="sb-nav-fixed">
@@ -31,8 +84,8 @@
                                     <div class="card bg-primary text-white mb-4">
                                         <div class="card-body">Số lượng User (${countUsers})</div>
                                         <div class="card-footer d-flex align-items-center justify-content-between">
-                                            <a class="small text-white stretched-link" href="/admin/user">View
-                                                Details</a>
+                                            <a class="small text-white stretched-link" href="/admin/user">Xem chi
+                                                tiết</a>
                                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
@@ -41,8 +94,8 @@
                                     <div class="card bg-danger text-white mb-4">
                                         <div class="card-body">Số lượng Product (${countProducts})</div>
                                         <div class="card-footer d-flex align-items-center justify-content-between">
-                                            <a class="small text-white stretched-link" href="/admin/product">View
-                                                Details</a>
+                                            <a class="small text-white stretched-link" href="/admin/product">Xem chi
+                                                tiết</a>
                                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
@@ -51,15 +104,13 @@
                                     <div class="card bg-success text-white mb-4">
                                         <div class="card-body">Số lượng Order (${countOrders})</div>
                                         <div class="card-footer d-flex align-items-center justify-content-between">
-                                            <a class="small text-white stretched-link" href="/admin/order">View
-                                                Details</a>
+                                            <a class="small text-white stretched-link" href="/admin/order">Xem chi
+                                                tiết</a>
                                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </main>
                     <jsp:include page="../layout/footer.jsp" />

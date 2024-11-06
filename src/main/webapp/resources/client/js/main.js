@@ -328,6 +328,8 @@
     //handle add to cart with ajax
     $('.btnAddToCartHomepage').click(function (event) {
         event.preventDefault();
+        console.log(123);
+
 
         if (!isLogin()) {
             $.toast({
@@ -427,6 +429,38 @@
         }
         return true;
     }
+    $(document).ready(function () {
+        const productList = $('.list-sale-product');
+        const productWidth = $('.product').outerWidth(true);
+        const visibleProducts = Math.floor($('.main-sale').width() / productWidth);
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = currentIndex * productWidth;
+            productList.css('transform', `translateX(-${offset}px)`);
+        }
+
+        $('.prevSale').click(function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        $('.nextSale').click(function () {
+            const maxIndex = $('.list-sale-product .product').length - visibleProducts;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        $(window).resize(function () {
+            updateCarousel();
+        });
+    });
+
+
 
 })(jQuery);
 

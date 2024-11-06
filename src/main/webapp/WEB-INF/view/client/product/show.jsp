@@ -32,6 +32,13 @@
 
                     <!-- Customized Bootstrap Stylesheet -->
                     <link href="/client/css/bootstrap.min.css" rel="stylesheet">
+                    <link href="<c:url value='/client/css/carousel-product.css' />" rel="stylesheet">
+                    <link href="<c:url value='/client/css/header.css' />" rel="stylesheet">
+                    <link href="<c:url value='/client/css/footer.css' />" rel="stylesheet">
+                    <link href="<c:url value='/client/css/common.css' />" rel="stylesheet">
+                    <link href="<c:url value='/client/css/product.css' />" rel="stylesheet">
+                    <link href="<c:url value='/client/css/hot-product.css' />" rel="stylesheet">
+                    <link href="<c:url value='/client/css/sale-product.css' />" rel="stylesheet">
 
                     <!-- Template Stylesheet -->
                     <link href="/client/css/style.css" rel="stylesheet">

@@ -1463,7 +1463,7 @@ progress {
 
     .col-lg-5 {
         flex: 0 0 auto;
-        width: 41.66666667%;
+        /* width: 41.66666667%; */
     }
 
     .col-lg-6 {
@@ -1473,7 +1473,7 @@ progress {
 
     .col-lg-7 {
         flex: 0 0 auto;
-        width: 58.33333333%;
+        width: 100%;
     }
 
     .col-lg-8 {
@@ -13187,11 +13187,12 @@ body {
 }
 
 .container {
+    margin-top: 80px;
     background: white;
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
+    width: 600px;
 }
 
 .error-icon {

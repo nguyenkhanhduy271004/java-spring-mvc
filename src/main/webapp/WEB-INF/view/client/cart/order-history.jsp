@@ -7,60 +7,110 @@
 
             <head>
                 <meta charset="utf-8">
-                <title> Lịch sử mua hàng - Laptopshop</title>
+                <title>Lịch sử mua hàng - BeautyShop</title>
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <meta content="" name="keywords">
                 <meta content="" name="description">
-
-                <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap"
                     rel="stylesheet">
-
-                <!-- Icon Font Stylesheet -->
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
                     rel="stylesheet">
-
-                <!-- Libraries Stylesheet -->
                 <link href="/client/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
                 <link href="/client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
-                <!-- Customized Bootstrap Stylesheet -->
                 <link href="/client/css/bootstrap.min.css" rel="stylesheet">
-
-                <!-- Template Stylesheet -->
                 <link href="/client/css/style.css" rel="stylesheet">
+                <link href="<c:url value='/client/css/carousel-product.css' />" rel="stylesheet">
+                <link href="<c:url value='/client/css/header.css' />" rel="stylesheet">
+                <link href="<c:url value='/client/css/footer.css' />" rel="stylesheet">
+                <link href="<c:url value='/client/css/common.css' />" rel="stylesheet">
+                <link href="<c:url value='/client/css/product.css' />" rel="stylesheet">
+                <link href="<c:url value='/client/css/hot-product.css' />" rel="stylesheet">
+                <link href="<c:url value='/client/css/sale-product.css' />" rel="stylesheet">
+                <style>
+                    :root {
+                        --primary-color: #FFC0CB;
+                        --accent-color: #B76E79;
+                        --text-color: #333333;
+                        --background-color: #F8E1E7;
+                        --gold-color: #FFD700;
+                    }
+
+                    body {
+                        font-family: 'Poppins', sans-serif;
+                        color: var(--text-color);
+                        background-color: var(--background-color);
+                    }
+
+                    h1,
+                    h2,
+                    h3,
+                    .breadcrumb-item,
+                    .btn,
+                    .table th,
+                    .table td {
+                        font-family: 'Playfair Display', serif;
+                    }
+
+                    .btn-primary {
+                        background-color: var(--primary-color);
+                        color: white;
+                        border-radius: 30px;
+                        font-weight: bold;
+                        transition: background-color 0.3s;
+                    }
+
+                    .btn-primary:hover {
+                        background-color: var(--accent-color);
+                        color: white;
+                    }
+
+                    .header-bar {
+                        background-color: white;
+                        border-bottom: 1px solid var(--gold-color);
+                    }
+
+                    .product-list {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 15px;
+                    }
+
+                    .product-card {
+                        width: 100%;
+                        max-width: 200px;
+                        margin: 0 auto;
+                        text-align: center;
+                        background-color: white;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        border-radius: 8px;
+                        overflow: hidden;
+                    }
+                </style>
             </head>
 
             <body>
-
-                <!-- Spinner Start -->
                 <div id="spinner"
-                    class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+                    class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
                     <div class="spinner-grow text-primary" role="status"></div>
                 </div>
-                <!-- Spinner End -->
 
                 <jsp:include page="../layout/header.jsp" />
 
-                <!-- Cart Page Start -->
                 <div class="container-fluid py-5">
                     <div class="container py-5">
-                        <div class="mb-3">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Lịch sử mua hàng</li>
-                                </ol>
-                            </nav>
-                        </div>
+                        <nav aria-label="breadcrumb" class="mb-4">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Lịch sử mua hàng</li>
+                            </ol>
+                        </nav>
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table align-middle table-borderless">
                                 <thead>
                                     <tr>
                                         <th scope="col">Sản phẩm</th>
@@ -72,92 +122,59 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:if test="${ empty orders}">
+                                    <c:if test="${empty orders}">
                                         <tr>
-                                            <td colspan="6">
-                                                Không có đơn hàng nào được tạo
-                                            </td>
+                                            <td colspan="6" class="text-center text-muted">Không có đơn hàng nào được
+                                                tạo</td>
                                         </tr>
                                     </c:if>
                                     <c:forEach var="order" items="${orders}">
                                         <tr>
-                                            <td colspan="2">Order Id = ${order.id}</td>
-                                            <td colspan="1">
-                                                <fmt:formatNumber type="number" value=" ${order.totalPrice}" />
-                                                đ
+                                            <td colspan="2"><strong>Order ID: ${order.id}</strong></td>
+                                            <td>
+                                                <fmt:formatNumber type="number" value="${order.totalPrice}" /> đ
                                             </td>
-                                            <td colspan="2"></td>
-                                            <td colspan="1">
-                                                ${order.status}
-                                            </td>
+                                            <td></td>
+                                            <td>${order.status}</td>
                                         </tr>
                                         <c:forEach var="orderDetail" items="${order.orderDetails}">
                                             <tr>
-                                                <th scope="row">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="/images/product/${orderDetail.product.image}"
-                                                            class="img-fluid me-5 rounded-circle"
-                                                            style="width: 80px; height: 80px;" alt="">
-                                                    </div>
-                                                </th>
                                                 <td>
-                                                    <p class="mb-0 mt-4">
-                                                        <a href="/product/${orderDetail.product.id}" target="_blank">
-                                                            ${orderDetail.product.name}
-                                                        </a>
-                                                    </p>
+                                                    <img src="/images/product/${orderDetail.product.image}"
+                                                        class="img-fluid rounded" style="width: 80px; height: 80px;">
+                                                </td>
+                                                <td><a href="/product/${orderDetail.product.id}"
+                                                        class="text-decoration-none">${orderDetail.product.name}</a>
                                                 </td>
                                                 <td>
-                                                    <p class="mb-0 mt-4">
-                                                        <fmt:formatNumber type="number" value="${orderDetail.price}" />
-                                                        đ
-                                                    </p>
+                                                    <fmt:formatNumber type="number" value="${orderDetail.price}" /> đ
                                                 </td>
+                                                <td>${orderDetail.quantity}</td>
                                                 <td>
-                                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                                        <input type="text"
-                                                            class="form-control form-control-sm text-center border-0"
-                                                            value="${orderDetail.quantity}">
-                                                    </div>
+                                                    <fmt:formatNumber type="number"
+                                                        value="${orderDetail.price * orderDetail.quantity}" /> đ
                                                 </td>
-                                                <td>
-                                                    <p class="mb-0 mt-4" data-cart-detail-id="${cartDetail.id}">
-                                                        <fmt:formatNumber type="number"
-                                                            value="${orderDetail.price * orderDetail.quantity}" /> đ
-                                                    </p>
-                                                </td>
-                                                <td></td>
-
+                                                <td>${order.status}</td>
                                             </tr>
                                         </c:forEach>
                                     </c:forEach>
-
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
-                <!-- Cart Page End -->
-
 
                 <jsp:include page="../layout/footer.jsp" />
 
-
-                <!-- Back to Top -->
                 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
                         class="fa fa-arrow-up"></i></a>
 
-
-                <!-- JavaScript Libraries -->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
                 <script src="/client/lib/easing/easing.min.js"></script>
                 <script src="/client/lib/waypoints/waypoints.min.js"></script>
                 <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
                 <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
-
-                <!-- Template Javascript -->
                 <script src="/client/js/main.js?version=1"></script>
             </body>
 
