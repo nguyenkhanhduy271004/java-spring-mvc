@@ -98,9 +98,11 @@
                     <div class="container">
                         <div class="header-sale">
                             <img src="<c:url value='/client/img/img-FlashSale/logo.webp' />" alt="Flash Sale Logo" />
-                            <a href="<c:url value='/products' />">
-                                <button>Xem tất cả</button>
-                            </a>
+                            <div class="show-all">
+                                <a href="<c:url value='/products' />">
+                                    <button>Xem tất cả</button>
+                                </a>
+                            </div>
                         </div>
                         <div class="main-sale">
                             <button class="carousel-button prevSale"><i class="fas fa-chevron-left"></i></button>

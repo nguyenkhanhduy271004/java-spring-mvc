@@ -60,3 +60,17 @@
     top: 40%;
     z-index: 2;
 }
+
+.show-all button{
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+.show-all {
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
